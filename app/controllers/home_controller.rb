@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   	if params[:ticker] == ""
   		@nothing = "No company was entered!"
   	elsif params[:ticker]
-
   		begin @stock = StockQuote::Stock.quote(params[:ticker])
   		rescue 
   		@error = "That stock symbol doesn't exist"
