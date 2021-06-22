@@ -50,7 +50,7 @@ class StocksController < ApplicationController
   end
 
   def correct_user
-    @ticker = current_user.stocks.find_by(id: params[:id])
+    @ticker = current_user.stock.find_by(id: params[:id])
     redirect_to stocks_path, notice: "Not Authorized to edit this stock" if @ticker.nil?
 
   end

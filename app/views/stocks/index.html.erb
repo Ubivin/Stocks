@@ -1,13 +1,12 @@
 
 
-<h1>Stocks</h1>
-
-<table>
-  <thead>
+<table class="table table-striped table-bordered table-hover"  >
+  <thead class="table-light">
     <tr>
       <th>Company</th>
       <th>Ticker</th>
       <th>Current Price</th>
+      <th>Market Cap</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +19,7 @@
      <% @ticker.company_name = "N/A" %>
       <% @ticker.symbol = "N/A" %>
       <% @ticker.latest_price= "N/A" %>
+      <% @ticker.market_cap= "N/A" %>
 
 
       <% elsif stock.ticker %>
@@ -37,12 +37,12 @@
        
 
         <tr>
-           <td><%= @ticker.company_name %></td>
+          <td><%= link_to @ticker.company_name, stock %> </td>
           <td><%= @ticker.symbol %></td>
           <td>$<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %></td>
-          <td><%= link_to 'Show', stock %></td>
-          <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-          <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>$<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %> </td>
+          <td><center><%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-primary" %></center></td>
+          <td><center><%= link_to 'Destroy', stock, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
         </tr>
       <% end %>
     <% end %>
